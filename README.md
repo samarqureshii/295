@@ -1,2 +1,2 @@
 # 295: Hardware Design and Communication
-> Some random code files.
+>Random scripts used to automate testing.
