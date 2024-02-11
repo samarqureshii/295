@@ -13,7 +13,7 @@ for i in range(data.shape[0]):
             data[i, 1] = float(user_input)
             break  
         except ValueError:
-            print("Invalid input. Please enter a numerical value.")
+            print("invalid input")
 
 print("V_in\tV_out")
 for row in data:
