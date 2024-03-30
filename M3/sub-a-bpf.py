@@ -98,8 +98,16 @@ scope.write(':CHAN1:COUP AC')
 scope.write(':CHAN2:COUP AC')
 
 # Frequency sweep 
+# N = 100
+# freq = arange(N)/(N-1)*16e6 + 4e6
+
+# Frequency sweep
 N = 100
-freq = arange(N)/(N-1)*16e6 + 1e6
+start_freq = 1e6  # Start frequency of 1 MHz
+end_freq = 20e6   # End frequency of 20 MHz
+freq_step = (end_freq - start_freq) / (N - 1)  # Calculate the step size
+freq = arange(start_freq, end_freq, freq_step)  # Create frequency array
+
 offset = 1e3                    # Offset between RF and LO frequencies
 input_ampl = 50e-3              # Amplitude of wave generator output
 
