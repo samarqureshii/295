@@ -97,9 +97,9 @@ scope.write(':TIMebase:SCAL +5.0E-04') # 500 us/div
 scope.write(':CHAN1:COUP AC')
 scope.write(':CHAN2:COUP AC')
 
-# Frequency sweep
-N = 51
-freq = arange(N)/(N-1)*16e6 + 4e6
+# Frequency sweep 
+N = 100
+freq = arange(N)/(N-1)*16e6 + 1e6
 offset = 1e3                    # Offset between RF and LO frequencies
 input_ampl = 50e-3              # Amplitude of wave generator output
 
@@ -135,7 +135,7 @@ for k in range(N):
     fxngen.write('SOUR1:FREQuency %e' % freq[k])
     fxngen.write('SOUR2:FREQuency %e' % freq[k])
     scope.write(':WGEN:FREQ %e' % (freq[k]+offset))
-    time.sleep(0.5)
+    time.sleep(1)
     #scope.write(':SINGle')
     ampl_i[k] = float(scope.query(':MEAS:VPP? CHAN1'))
     ampl_q[k] = float(scope.query(':MEAS:VPP? CHAN2'))
