@@ -97,10 +97,9 @@ scope.write(':TIMebase:SCAL +5.0E-04') # 500 us/div
 scope.write(':CHAN1:COUP AC')
 scope.write(':CHAN2:COUP AC')
 
-# Frequency sweep 
-N = 100
-freq = arange(N)/(N-1)*16e6 + 4e6
-
+# Frequency sweep
+N = 101
+freq = arange(N)/(N-1)*16e6 + 7e6
 offset = 1e3                    # Offset between RF and LO frequencies
 input_ampl = 50e-3              # Amplitude of wave generator output
 
