@@ -79,14 +79,14 @@ fxngen.write('UNIT:ANGL DEG')
 
 # Setup waveform generator
 fxngen.write('SOUR1:FUNCtion SIN')
-fxngen.write('SOUR1:VOLTage:HIGH +3.3')
+fxngen.write('SOUR1:VOLTage:HIGH +0.05')
 fxngen.write('SOUR1:VOLTage:LOW +0.0')
 fxngen.write('SOUR1:PHASe:SYNC')
 fxngen.write('SOUR1:PHASe +0.0')
 fxngen.write('OUTPut1 ON')
 
 fxngen.write('SOUR2:FUNCtion SIN')
-fxngen.write('SOUR2:VOLTage:HIGH +3.3')
+fxngen.write('SOUR2:VOLTage:HIGH +0.05')
 fxngen.write('SOUR2:VOLTage:LOW +0.0')
 fxngen.write('SOUR2:PHASe:SYNC')
 fxngen.write('SOUR2:PHASe -9.0E+01')
