@@ -89,7 +89,7 @@ fxngen.write('UNIT:ANGL DEG')
 # Setup waveform generator
 fxngen.write('SOUR1:FUNCtion SIN')
 fxngen.write('SOUR1:FREQuency +1.4E+07')
-fxngen.write('SOUR1:VOLTage:HIGH +0.05')
+fxngen.write('SOUR1:VOLTage:HIGH +3.3')
 fxngen.write('SOUR1:VOLTage:LOW +0.0')
 fxngen.write('SOUR1:PHASe:SYNC')
 fxngen.write('SOUR1:PHASe +0.0')
@@ -97,7 +97,7 @@ fxngen.write('OUTPut1 ON')
 
 fxngen.write('SOUR2:FUNCtion SIN')
 fxngen.write('SOUR2:FREQuency +1.4E+07')
-fxngen.write('SOUR2:VOLTage:HIGH +0.05')
+fxngen.write('SOUR2:VOLTage:HIGH +3.3')
 fxngen.write('SOUR2:VOLTage:LOW +0.0')
 fxngen.write('SOUR2:PHASe:SYNC')
 fxngen.write('SOUR2:PHASe -90.0')
@@ -212,14 +212,7 @@ ax.grid(True)
 ax.set_title('Frequency response of LPF')
 savefig('lpf.png')
 
-# fig, ax = subplots()
-# ax.semilogx(fm, 20*log10(ampl_i/input_ampl))
-# ax.semilogx(fm, 20*log10(ampl_q/input_ampl))
-# ax.set_xlabel('Message frequency [Hz]');
-# ax.set_ylabel('Conversion gain [dB]');
-# ax.legend(('I', 'Q'))
-# ax.grid(True)
-# savefig('iq_compare.png')
+# MIXER TEST
 
 fig, ax = subplots()
 ax.plot(fm, 20*log10(ampl_i/input_ampl))
@@ -228,35 +221,22 @@ ax.set_xlabel('Message frequency [Hz]');
 ax.set_ylabel('Conversion gain [dB]');
 ax.legend(('I', 'Q'))
 ax.grid(True)
+ax.set_xlim([0, 0.1e+6])
 savefig('iq_compare.png')
 
-# fig, ax = subplots()
-# ax.set_xlabel('Message frequency [Hz]')
-# ax.set_ylabel('Amplitude balance I/Q [dB]')
-# ax.semilogx(fm, 20*log10(ampl_i/ampl_q))
-# ax.grid(True)
-# savefig('balance_ampl.png')
-
 fig, ax = subplots()
-
 ax.set_xlabel('Message frequency [Hz]')
 ax.set_ylabel('Amplitude balance I/Q [dB]')
 ax.plot(fm, 20*log10(ampl_i/ampl_q))
 ax.grid(True)
+ax.set_xlim([0, 0.1e+6])
 savefig('balance_ampl.png')
-
-# fig, ax = subplots()
-# ax.set_xlabel('Message frequency [Hz]')
-# ax.set_ylabel('Phase shift between I and Q [deg]')
-# ax.semilogx(fm, phdiff)
-# ax.grid(True)
-# ax.set_ylim((-200, 200))
-# savefig('balance_phase.png')
 
 fig, ax = subplots()
 ax.set_xlabel('Message frequency [Hz]')
 ax.set_ylabel('Phase shift between I and Q [deg]')
 ax.plot(fm, phdiff)
 ax.grid(True)
-ax.set_ylim((-200, 200))
+ax.set_xlim([0, 0.1e+6])
+ax.set_ylim((-100, -70))
 savefig('balance_phase.png')
