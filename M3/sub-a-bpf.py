@@ -79,14 +79,14 @@ fxngen.write('UNIT:ANGL DEG')
 
 # Setup waveform generator
 fxngen.write('SOUR1:FUNCtion SIN')
-fxngen.write('SOUR1:VOLTage:HIGH +0.05')
+fxngen.write('SOUR1:VOLTage:HIGH +3.3')
 fxngen.write('SOUR1:VOLTage:LOW +0.0')
 fxngen.write('SOUR1:PHASe:SYNC')
 fxngen.write('SOUR1:PHASe +0.0')
 fxngen.write('OUTPut1 ON')
 
 fxngen.write('SOUR2:FUNCtion SIN')
-fxngen.write('SOUR2:VOLTage:HIGH +0.05')
+fxngen.write('SOUR2:VOLTage:HIGH +3.3')
 fxngen.write('SOUR2:VOLTage:LOW +0.0')
 fxngen.write('SOUR2:PHASe:SYNC')
 fxngen.write('SOUR2:PHASe -9.0E+01')
@@ -98,8 +98,8 @@ scope.write(':CHAN1:COUP AC')
 scope.write(':CHAN2:COUP AC')
 
 # Frequency sweep
-N = 101
-freq = arange(N)/(N-1)*16e6 + 7e6
+N = 51
+freq = arange(N)/(N-1)*16e6 + 4e6
 offset = 1e3                    # Offset between RF and LO frequencies
 input_ampl = 50e-3              # Amplitude of wave generator output
 
@@ -135,7 +135,7 @@ for k in range(N):
     fxngen.write('SOUR1:FREQuency %e' % freq[k])
     fxngen.write('SOUR2:FREQuency %e' % freq[k])
     scope.write(':WGEN:FREQ %e' % (freq[k]+offset))
-    time.sleep(1)
+    time.sleep(0.5)
     #scope.write(':SINGle')
     ampl_i[k] = float(scope.query(':MEAS:VPP? CHAN1'))
     ampl_q[k] = float(scope.query(':MEAS:VPP? CHAN2'))
