@@ -212,27 +212,51 @@ ax.grid(True)
 ax.set_title('Frequency response of LPF')
 savefig('lpf.png')
 
+# fig, ax = subplots()
+# ax.semilogx(fm, 20*log10(ampl_i/input_ampl))
+# ax.semilogx(fm, 20*log10(ampl_q/input_ampl))
+# ax.set_xlabel('Message frequency [Hz]');
+# ax.set_ylabel('Conversion gain [dB]');
+# ax.legend(('I', 'Q'))
+# ax.grid(True)
+# savefig('iq_compare.png')
+
 fig, ax = subplots()
-ax.semilogx(fm, 20*log10(ampl_i/input_ampl))
-ax.semilogx(fm, 20*log10(ampl_q/input_ampl))
+ax.plot(fm, 20*log10(ampl_i/input_ampl))
+ax.plot(fm, 20*log10(ampl_q/input_ampl))
 ax.set_xlabel('Message frequency [Hz]');
 ax.set_ylabel('Conversion gain [dB]');
 ax.legend(('I', 'Q'))
 ax.grid(True)
 savefig('iq_compare.png')
 
+# fig, ax = subplots()
+# ax.set_xlabel('Message frequency [Hz]')
+# ax.set_ylabel('Amplitude balance I/Q [dB]')
+# ax.semilogx(fm, 20*log10(ampl_i/ampl_q))
+# ax.grid(True)
+# savefig('balance_ampl.png')
+
 fig, ax = subplots()
 
 ax.set_xlabel('Message frequency [Hz]')
 ax.set_ylabel('Amplitude balance I/Q [dB]')
-ax.semilogx(fm, 20*log10(ampl_i/ampl_q))
+ax.plot(fm, 20*log10(ampl_i/ampl_q))
 ax.grid(True)
 savefig('balance_ampl.png')
+
+# fig, ax = subplots()
+# ax.set_xlabel('Message frequency [Hz]')
+# ax.set_ylabel('Phase shift between I and Q [deg]')
+# ax.semilogx(fm, phdiff)
+# ax.grid(True)
+# ax.set_ylim((-200, 200))
+# savefig('balance_phase.png')
 
 fig, ax = subplots()
 ax.set_xlabel('Message frequency [Hz]')
 ax.set_ylabel('Phase shift between I and Q [deg]')
-ax.semilogx(fm, phdiff)
+ax.plot(fm, phdiff)
 ax.grid(True)
 ax.set_ylim((-200, 200))
 savefig('balance_phase.png')
